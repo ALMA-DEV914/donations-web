@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Avatar, Button, Paper, Grid,  Typography, Container} from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import useStyles from "./styles";
@@ -8,6 +8,7 @@ import Icon from "./icon";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { signin, signup } from '../../actions/auth';
+import { gapi } from "gapi-script";
 
 const initialState = {
   firstName: "",
@@ -48,6 +49,18 @@ const Auth = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
   };
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId:
+          "430891263006-h66hr5srhu8m8oq4jestot4do9ermdsc.apps.googleusercontent.com",
+        scope: "email",
+      });
+    }
+
+    gapi.load("client:auth2", start);
+  }, []);
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
