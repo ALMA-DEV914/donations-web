@@ -1,13 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import { Avatar, Button, Paper, Grid,  Typography, Container} from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import {
+  Avatar,
+  Button,
+  Paper,
+  Grid,
+  Typography,
+  Container,
+} from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import useStyles from "./styles";
-import Input from './Input';
+import Input from "./Input";
 import { GoogleLogin } from "react-google-login";
 import Icon from "./icon";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { signin, signup } from '../../actions/auth';
+import { signin, signup } from "../../actions/auth";
 import { gapi } from "gapi-script";
 
 const initialState = {
@@ -18,8 +25,6 @@ const initialState = {
   confirmPassword: "",
 };
 
-
-
 const Auth = () => {
   const classes = useStyles();
   const [isSignup, setIsSignup] = useState(false);
@@ -27,8 +32,8 @@ const Auth = () => {
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
-   
-    const handleShowPassword = () =>
+
+  const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const handleSubmit = (event) => {
@@ -67,17 +72,17 @@ const Auth = () => {
     const token = res?.tokenId;
 
     try {
-      dispatch({ type: "AUTH", data: { result, token }});
-      history.push('/');
+      dispatch({ type: "AUTH", data: { result, token } });
+      history.push("/");
     } catch (error) {
       console.log(error);
     }
   };
 
-    const googleFailure = (error) => {
-      console.log(error);
-      console.log("Google Sign in was not successful. Try again later.");
-    };
+  const googleFailure = (error) => {
+    console.log(error);
+    console.log("Google Sign in was not successful. Try again later.");
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -134,7 +139,7 @@ const Auth = () => {
             color="primary"
             className={classes.submit}
           >
-            {isSignup ? "Sign Up" : "Sign in"}
+            {isSignup ? "Sign Up" : "Sign In"}
           </Button>
 
           <GoogleLogin
@@ -169,8 +174,7 @@ const Auth = () => {
         </form>
       </Paper>
     </Container>
-    
-  )
-}
+  );
+};
 
-export default Auth
+export default Auth;
