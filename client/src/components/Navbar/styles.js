@@ -20,6 +20,7 @@ export default makeStyles((theme) => ({
     fontSize: '2em',
     fontWeight: 300,
   },
+  
   image: {
     marginLeft: '10px',
     marginTop: '5px',
@@ -37,6 +38,7 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     width: '400px',
     alignItems: 'center',
+    color: 'white',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
       marginTop: 20,
@@ -54,10 +56,14 @@ export default makeStyles((theme) => ({
   brandContainer: {
     display: 'flex',
     alignItems: 'center',
+    color: 'white', 
+    textDecoration: 'none'
+    
   },
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+  
 }));
 
