@@ -1,8 +1,5 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
-import Navbar from './components/Navbar/Navbar';
-import React from 'react';
-import { Container } from '@material-ui/core';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import PostDetails from './components/PostDetails/PostDetails';
