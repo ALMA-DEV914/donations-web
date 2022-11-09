@@ -55,7 +55,7 @@ const Auth = () => {
     setShowPassword(false);
   };
 
-  useEffect(() => {
+ useEffect(() => {
     function start() {
       gapi.client.init({
         clientId:
@@ -65,7 +65,7 @@ const Auth = () => {
     }
 
     gapi.load("client:auth2", start);
-  }, []);
+  }, []); 
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
