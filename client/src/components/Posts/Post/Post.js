@@ -75,11 +75,11 @@ const Post = ({ post, setCurrentId }) => {
   return (
     <Card className={classes.card} raised elevation={6}>
       <div className={classes.overlay}>
-      <Avatar  alt={post.name} src={post.name}>{post.name.charAt(0)}</Avatar>
+      <Avatar className={classes.blue} alt={post.name} src={post.name}>{post.name.charAt(0)}</Avatar>
       <div>
         <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">
-          {moment(post.createdAt).fromNow()}
+          {moment(post.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
         </Typography>
         </div>
       </div>

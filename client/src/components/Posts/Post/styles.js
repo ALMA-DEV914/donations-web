@@ -54,5 +54,9 @@ export default makeStyles({
     display: 'block',
     textAlign: 'initial',
   },
-
+  blue: {
+    color: 'white',
+    background: '#2196f3', 
+    margin: '5px'
+  },
 });
