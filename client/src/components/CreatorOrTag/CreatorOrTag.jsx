@@ -1,36 +1,47 @@
-import React, { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import { Typography, CircularProgress, Grid, Divider } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-
-import Post from '../Posts/Post/Post';
-import { getPostsByCreator, getPostsBySearch } from '../../actions/posts';
+import React, { useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import {
+  Typography,
+  CircularProgress,
+  Grid,
+  Divider,
+  Avatar,
+} from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import Post from "../Posts/Post/Post";
+import { getPostsByCreator, getPostsBySearch } from "../../actions/posts";
+import useStyles from "./styles";
 
 const CreatorOrTag = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
   const { posts, isLoading } = useSelector((state) => state.posts);
-
+  const classes = useStyles();
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname.startsWith('/tags')) {
+    if (location.pathname.startsWith("/tags")) {
       dispatch(getPostsBySearch({ tags: name }));
     } else {
       dispatch(getPostsByCreator(name));
     }
   }, [name]);
 
-  if (!posts.length && !isLoading) return 'No posts';
+  if (!posts.length && !isLoading) return "No posts";
 
   return (
-    <div>
-      <Typography variant="h2">{name}</Typography>
-      <Divider style={{ margin: '20px 0 50px 0' }} />
-      {isLoading ? <CircularProgress /> : (
+    <div className={classes.postList}>
+      <Typography variant="h2" className={classes.profileName}>
+        {name}
+      </Typography>
+
+      <Divider style={{ margin: "20px 0 50px 0" }} />
+      {isLoading ? (
+        <CircularProgress />
+      ) : (
         <Grid container alignItems="stretch" spacing={3}>
           {posts?.map((post) => (
-            <Grid key={post._id} item xs={12} sm={12} md={6} lg={3}>
+            <Grid key={post._id} item xs={12} sm={12} md={6} lg={4}>
               <Post post={post} />
             </Grid>
           ))}
@@ -41,4 +52,3 @@ const CreatorOrTag = () => {
 };
 
 export default CreatorOrTag;
-

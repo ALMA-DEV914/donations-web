@@ -76,7 +76,7 @@ const Home = () => {
                 onKeyDown={handleKeyPress}
                 name="search"
                 variant="outlined"
-                label="Search Memories"
+                label="Search Post"
                 fullWidth
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -86,7 +86,7 @@ const Home = () => {
                 value={tags}
                 onAdd={(chip) => handleAddChip(chip)}
                 onDelete={(chip) => handleDeleteChip(chip)}
-                label="Search Tags"
+                label="Search by Tags"
                 variant="outlined"
               />
               <Button
@@ -98,7 +98,7 @@ const Home = () => {
                 Search
               </Button>
             </AppBar>
-         
+
             <Form currentId={currentId} setCurrentId={setCurrentId} />
             {!searchQuery && !tags.length && (
               <Paper className={classes.pagination} elevation={6}>
@@ -108,7 +108,6 @@ const Home = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={8}>
             <Posts setCurrentId={setCurrentId} />
-
           </Grid>
         </Grid>
       </Container>

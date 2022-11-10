@@ -1,6 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  container: {
+     width: '80%', 
+     padding: '15px', 
+     margin: 'auto'
+  },
   media: {
     borderRadius: '20px',
     objectFit: 'cover',
@@ -10,7 +15,6 @@ export default makeStyles((theme) => ({
   },
   card: {
     display: 'flex',
-    width: '100%',
     [theme.breakpoints.down('sm')]: {
       flexWrap: 'wrap',
       flexDirection: 'column',
@@ -50,5 +54,15 @@ export default makeStyles((theme) => ({
     overflowY: 'auto',
     marginRight: '30px',
   },
+  blue: {
+    background: '#2196f3', 
+    margin: '5px'
+  },
+  avatarComment: {
+    display: 'flex',  
+  }, 
+  name: {
+    margin: 'auto 0'
+  }
 }));
 

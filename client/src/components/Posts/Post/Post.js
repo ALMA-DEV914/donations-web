@@ -47,7 +47,7 @@ const Post = ({ post, setCurrentId }) => {
       return likes.find((like) => like === userId) ? (
         <>
         
-          <ThumbUpAltIcon fontSize="small" />
+          <ThumbUpAltIcon fontSize="small" color="primary"/>
           &nbsp;
           {likes.length > 2
             ? `You and ${likes.length - 1} others`
@@ -55,7 +55,7 @@ const Post = ({ post, setCurrentId }) => {
         </>
       ) : (
         <>
-          <ThumbUpAltOutlined fontSize="small" />
+          <ThumbUpAltOutlined fontSize="small" color="primary"/>
           &nbsp;{likes.length} {likes.length === 1 ? "Like" : "Likes"}
         </>
       );
@@ -63,7 +63,7 @@ const Post = ({ post, setCurrentId }) => {
 
     return (
         <>
-          <ThumbUpAltOutlined fontSize="small" />
+          <ThumbUpAltOutlined fontSize="small" color="primary"/>
           &nbsp;Like
         </>
       );
