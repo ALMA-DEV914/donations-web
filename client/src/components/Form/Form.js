@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 import { useHistory } from "react-router-dom";
-
+import ChipInput from "material-ui-chip-input";
 
 import { createPost, updatePost } from "../../actions/posts";
 import useStyles from "./styles";
@@ -53,13 +53,13 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
       <Paper className={classes.paper} elevation={6}>
         <Typography variant="h6" align="center">
-          Please Sign In to create your own your post and like other's post.
+          Please Sign In to create your own memories and like other's memories.
         </Typography>
       </Paper>
     );
   }
 
- /* const handleAddChip = (tag) => {
+  const handleAddChip = (tag) => {
     setPostData({ ...postData, tags: [...postData.tags, tag] });
   };
 
@@ -69,7 +69,7 @@ const Form = ({ currentId, setCurrentId }) => {
       tags: postData.tags.filter((tag) => tag !== chipToDelete),
     });
   };
-*/
+
   return (
     <Paper className={classes.paper} elevation={6}>
       <form
@@ -79,7 +79,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? `Editing "${post?.title}"` : "Creating a Post"}
+          {currentId ? `Editing "${post?.title}"` : "Creating a Memory"}
         </Typography>
         <TextField
           name="title"
@@ -101,18 +101,17 @@ const Form = ({ currentId, setCurrentId }) => {
             setPostData({ ...postData, message: e.target.value })
           }
         />
-        <TextField
+        <div style={{ padding: "5px 0", width: "94%" }}>
+          <ChipInput
             name="tags"
             variant="outlined"
             label="Tags"
             fullWidth
             value={postData.tags}
-            onChange={(e) =>
-              setPostData({ ...postData, tags: e.target.value })
-            }
-           
+            onAdd={(chip) => handleAddChip(chip)}
+            onDelete={(chip) => handleDeleteChip(chip)}
           />
-       
+        </div>
         <div className={classes.fileInput}>
           <FileBase
             type="file"
@@ -128,7 +127,6 @@ const Form = ({ currentId, setCurrentId }) => {
           color="primary"
           size="large"
           type="submit"
-          link="/"
           fullWidth
         >
           Submit
